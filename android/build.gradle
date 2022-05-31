@@ -5,12 +5,12 @@ def safeExtGet(prop, fallback) {
 }
 
 android {
-    compileSdkVersion safeExtGet('compileSdkVersion', 23)
-    buildToolsVersion safeExtGet('buildToolsVersion', "23.0.1")
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion safeExtGet('buildToolsVersion', "28.0.3")
 
     defaultConfig {
-        minSdkVersion safeExtGet('minSdkVersion', 19)
-        targetSdkVersion safeExtGet('targetSdkVersion', 23)
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         ndk {
@@ -26,7 +26,51 @@ android {
     }
 }
 
+buildscript {
+    ext {
+        buildToolsVersion = "28.0.3"
+        minSdkVersion = 16
+        compileSdkVersion = 28
+        targetSdkVersion = 28
+    }
+    repositories {
+        google()
+        jcenter()
+//        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:3.5.3")
+//        classpath "com.android.support:support-compat:28.0.0-alpha1"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        ivy { url 'https://developer.iristick.com/repo' }
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+
+        google()
+        jcenter()
+
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
 dependencies {
-    implementation 'com.facebook.react:react-native:+'
+    implementation 'com.facebook.react:react-native:0.63.3'
+//    implementation 'com.android.support:support-v4:28.0.0-alpha1'
+    implementation 'com.iristick.smartglass:core:1.3.2'
+    implementation 'com.iristick.smartglass:support:1.3.2'
     api fileTree(dir: 'libs', include: ['*.jar'])
 }

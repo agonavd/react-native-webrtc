@@ -3,6 +3,7 @@ package com.oney.WebRTCModule;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import android.app.Application;
 import android.util.Log;
 import android.util.SparseArray;
 
@@ -19,6 +20,7 @@ import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.WritableMap;
 import com.facebook.react.module.annotations.ReactModule;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
+import com.iristick.smartglass.support.app.IristickApp;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,7 +80,7 @@ public class WebRTCModule extends ReactContextBaseJavaModule {
 
     public WebRTCModule(ReactApplicationContext reactContext, Options options) {
         super(reactContext);
-
+        IristickApp.init((Application) reactContext.getApplicationContext());
         mPeerConnectionObservers = new SparseArray<>();
         localStreams = new HashMap<>();
 
