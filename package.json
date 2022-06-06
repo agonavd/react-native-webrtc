@@ -1,13 +1,13 @@
 {
-  "name": "react-native-webrtc",
-  "version": "1.100.1",
+  "name": "iristick-react-native-webrtc",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/react-native-webrtc/react-native-webrtc.git"
+    "url": "git+https://github.com/agonavd/react-native-webrtc.git"
   },
-  "description": "WebRTC for React Native",
+  "description": "A fork of react-native-webrtc to support iristick smart glasses",
   "license": "MIT",
-  "homepage": "https://github.com/react-native-webrtc/react-native-webrtc",
+  "homepage": "https://github.com/agonavd/react-native-webrtc",
   "keywords": [
     "react-component",
     "react-native",
@@ -35,7 +35,7 @@
     "prepare": "husky install && bob build"
   },
   "bugs": {
-    "url": "https://github.com/react-native-webrtc/react-native-webrtc/issues"
+    "url": "https://github.com/agonavd/react-native-webrtc/issues"
   },
   "devDependencies": {
     "@types/react": "17.0.40",
